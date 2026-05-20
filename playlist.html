@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>My Playlist</title>
+<link rel="icon" image="enhypensym.png" href="images/enhypensym.png">
+<style>
+
+@keyframes slide {
+from { transform: translateX(300%); }
+to { transform: translateX(-300%); }
+}
+.pagination {
+margin-top: 20px;
+display: flex;
+gap: 10px;
+}
+
+.pagination a {
+background-color: #ffbf00;
+color: white;
+padding: 8px 10px;
+text-decoration: none;
+border: 1px #ffbf00;
+border-radius: 10px;
+font-size: 12px;
+color: white;
+transition: background-color 0.3s;
+}
+
+.pagination a.active {
+background-color: #ff5ce9;
+border-color: #ff5ce9;
+}
+
+.pagination a:hover:not(.active) {
+background-color: rgba(255, 191, 0, 0.3);
+}
+
+.playlist-link {
+display: flex;
+align-items: center;
+width: fit-content;
+text-decoration: none;
+color: red;
+font-size: 20px;
+}
+
+.playlist-link:hover {
+text-decoration: underline;
+}
+
+.link-icon {
+display: inline-block;
+align-items: center;
+justify-content: center;
+width: 50px;
+height: auto;
+margin-right: 30px;
+gap: 30px;
+margin-top: 10px;
+
+}
+
+
+body{
+
+background-image: url('images/enhypen.jpg');
+background-repeat: no-repeat;
+background-attachment: fixed;
+background-size: cover;
+margin: 0;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+
+}
+
+h1{
+white-space: nowrap;
+animation: slide 10s infinite linear;
+text-shadow: 0 0 10px black;
+font-size: 50px;
+color: orange;
+}
+ p {
+font-size: 18px;
+font-weight: 400;
+color: #ffbf00;
+}
+p:hover{
+color: yellow;
+}
+</style>
+</head>
+
+<body> 
+
+<h1 id="movingTitle">@My Playlist</h1>
+<p id="songTitle">ENHYPEN - Blossom</p>
+
+<audio id="myAudio" controls>
+  <source id="audioSource" src="BLOSSOM.mp3" type="audio/mpeg">
+</audio>
+
+<a href="https://www.youtube.com/playlist?list=PLDYUer4TOWn5tXAmUv3kbD-c2281kMFAj"target="_blank"class="playlist-link">
+<img src="images/hee.gif" alt="icon" class="link-icon">
+Enhypen Playlist
+</a>
+
+<div class="pagination">
+<a href="#">Previous</a>
+<a href="#" onclick="changeSong('BLOSSOM.mp3','Enhypen - Blossom')">1</a>
+<a href="#" onclick="changeSong('SHOUT.mp3','Enhypen - Shout Out')">2</a>
+<a href="#" onclick="changeSong('1009.mp3','Enhypen - Highway 1009')">3</a>
+<a href="#">Next</a>
+</div>
+
+<script>
+function changeSong(songPath, newTitle) {
+    var audio = document.getElementById('myAudio');
+    var source = document.getElementById('audioSource');
+    var titleDisplay = document.getElementById('songTitle');
+
+    // Update the source and the title text
+    source.src = songPath;
+    titleDisplay.innerHTML = newTitle;
+
+    // Reload and play
+    audio.load();
+    audio.play();
+}
+</script>
+</body>
+</html>

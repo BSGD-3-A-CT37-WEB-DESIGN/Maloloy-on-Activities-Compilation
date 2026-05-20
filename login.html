@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+:root {
+
+--primary: #ff8c00;
+--bg-muted: #ffb347;
+--accent: #ff5ce9;
+--text-dark: #333;
+}
+body {
+margin: 0;
+font-family: 'Inter', sans-serif;
+background-color: var(--bg-muted);
+}
+
+.login-section {
+height: 100vh;
+display: flex;
+justify-content: center;
+align-items: center;
+
+}
+
+.login-box {
+background: white;
+padding: 40px;
+border-radius: 20px;
+box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+text-align: center;
+width: 300px;
+}
+
+.login-box input {
+width: 100%;
+padding: 10px;
+margin: 10px 0;
+border: 1px solid #ddd;
+border-radius: 8px;
+box-sizing: border-box;
+}
+
+.login-btn:hover {
+filter: brightness(90%);
+}
+
+</style>
+</head>
+<body>
+
+<section class="login-section" id="login">
+<div class="login-box">
+<h2>Welcome!</h2>
+<input type="text" placeholder="Username">
+<input type="password" placeholder="Password">
+<button class="login-btn" onclick="document.getElementById('hero').scrollIntoView()" 
+        style="background: var(--primary); color: white; border: none; padding: 10px 20px; border-radius: 10px; cursor: pointer;">
+    Login
+</button>
+</div>
+</section>
+
+</body>
+</html>

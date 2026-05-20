@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>My Playlist</title>
+<link rel="icon" image="ensymbol.png" href="images/ensymbol.png">
+<style>
+
+@keyframes slide {
+  from { transform: translateX(300%); }
+  to { transform: translateX(-300%); }
+}
+.pagination {
+  margin-top: 15px;
+  display: flex;
+  gap: 10px;
+}
+
+.pagination a {
+  color: white;
+  padding: 8px 10px;
+  text-decoration: none;
+  border: 1px solid #ffbf00;
+  border-radius: 10px;
+  font-size: 10px;
+  color: white;
+  transition: background-color 0.3s;
+}
+
+.pagination a.active {
+  background-color: #ff5ce9;
+  border-color: #ff5ce9;
+}
+
+.pagination a:hover:not(.active) {
+  background-color: rgba(255, 191, 0, 0.3);
+}
+
+body{
+
+background-image: url('images/enhypen.jpg');
+background-repeat: no-repeat;
+background-attachment: fixed;
+background-size: cover;
+margin: 0;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+height: 100hvh;
+}
+
+h1{
+white-space: nowrap;
+animation: slide 10s infinite linear;
+text-shadow: 0 0 10px black;
+font-size: 50px;
+color: orange;
+}
+ p {
+  font-size: 18px;
+  font-weight: 400;
+  color: #ffbf00;
+  }
+  p:hover{
+    color: yellow;
+  }
+</style>
+</head>
+<body> <h1>@My Playlist</h1>
+<p>ENHYPEN - Blossom</p>
+<audio controls>
+<source src="BLOSSOM.mp3"type="audio/mpeg">
+</audio>
+
+<img src="images/<iframe src="https://giphy.com/embed/oiBtHanblrHFcke6DI" width="480" height="480" style="" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/enhypen-heeseung-leeheeseung-oiBtHanblrHFcke6DI">via GIPHY</a></p>
+
+<div class="pagination">
+<a href="#">Previous</a>
+<a href="#">1</a>
+<a href="#">2</a>
+<a href="#">3</a>
+<a href="#">Next</a>
+</div>
+
+
+</body>
+</html>
