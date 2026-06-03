@@ -3,7 +3,7 @@
 
 <head>
 <title>My Playlist</title>
-<link rel="icon" image="enhypensym.png" href="images/enhypensym.png">
+<link rel="icon" type="image/png" href="enhypensym.png">
 <style>
 
 @keyframes slide {
@@ -65,7 +65,7 @@ margin-top: 10px;
 
 body{
 
-background-image: url('images/enhypen.jpg');
+background-image: url('enhypen.jpg');
 background-repeat: no-repeat;
 background-attachment: fixed;
 background-size: cover;
@@ -105,31 +105,54 @@ color: yellow;
 </audio>
 
 <a href="https://www.youtube.com/playlist?list=PLDYUer4TOWn5tXAmUv3kbD-c2281kMFAj"target="_blank"class="playlist-link">
-<img src="images/hee.gif" alt="icon" class="link-icon">
+<img src="hee.gif" alt="icon" class="link-icon">
 Enhypen Playlist
 </a>
 
 <div class="pagination">
-<a href="#">Previous</a>
-<a href="#" onclick="changeSong('BLOSSOM.mp3','Enhypen - Blossom')">1</a>
-<a href="#" onclick="changeSong('SHOUT.mp3','Enhypen - Shout Out')">2</a>
-<a href="#" onclick="changeSong('1009.mp3','Enhypen - Highway 1009')">3</a>
-<a href="#">Next</a>
+<a href="#" onclick="moveSong(-1)">Previous</a>
+    <a href="#" onclick="changeSong(0)">1</a>
+    <a href="#" onclick="changeSong(1)">2</a>
+    <a href="#" onclick="changeSong(2)">3</a>
+    <a href="#" onclick="moveSong(1)">Next</a>
 </div>
 
 <script>
-function changeSong(songPath, newTitle) {
-    var audio = document.getElementById('myAudio');
-    var source = document.getElementById('audioSource');
-    var titleDisplay = document.getElementById('songTitle');
-
-    // Update the source and the title text
-    source.src = songPath;
-    titleDisplay.innerHTML = newTitle;
-
-    // Reload and play
-    audio.load();
-    audio.play();
+const songs = [
+{ path: 'BLOSSOM.mp3', title: 'Enhypen - Blossom' },
+{ path: 'SHOUT.mp3', title: 'Enhypen - Shout Out' },
+{ path: '1009.mp3', title: 'Enhypen - Highway 1009' }
+];
+ let currentSongIndex = 0;
+ function changeSong(index) {
+ if (index < 0 || index >= songs.length) return;
+currentSongIndex = index;
+const song = songs[currentSongIndex];
+const audio = document.getElementById('myAudio');
+const source = document.getElementById('audioSource');
+const titleDisplay = document.getElementById('songTitle');
+source.src = song.path;
+titleDisplay.innerHTML = song.title;
+audio.load();
+audio.play();
+updatePaginationUI();
+}
+function moveSong(direction) {
+let newIndex = currentSongIndex + direction;
+if (newIndex >= songs.length) newIndex = 0;
+if (newIndex < 0) newIndex = songs.length - 1;
+changeSong(newIndex);
+}
+function updatePaginationUI() {
+const links = document.querySelectorAll('.pagination a');
+ links.forEach((link, idx) => {
+  if (idx === currentSongIndex + 1) {
+  link.classList.add('active');
+ } 
+  else {
+link.classList.remove('active');
+  }
+});
 }
 </script>
 </body>
